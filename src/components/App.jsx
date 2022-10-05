@@ -49,7 +49,7 @@ export class App extends Component {
   onDelete = e => {
     const name = e.currentTarget.getAttribute('name');
 
-    this.state.contacts.map(item => {
+    this.state.contacts.forEach(item => {
       if (item.name.toLowerCase() === name.toLowerCase()) {
         const index = this.state.contacts.indexOf(item);
         this.setState(prevState => ({

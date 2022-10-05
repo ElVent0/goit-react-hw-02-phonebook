@@ -9,7 +9,7 @@ class Contacts extends Component {
       filteredArray = [...this.props.contacts];
       console.log(filteredArray);
     } else if (this.props.filter !== '') {
-      this.props.contacts.map(item => {
+      this.props.contacts.forEach(item => {
         if (item.name.toLowerCase().includes(this.props.filter.toLowerCase())) {
           filteredArray.push(item);
         }
