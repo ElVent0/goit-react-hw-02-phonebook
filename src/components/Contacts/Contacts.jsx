@@ -1,5 +1,6 @@
 import css from './Contacts.module.css';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Contacts extends Component {
   onFilterArray = () => {
@@ -42,3 +43,9 @@ class Contacts extends Component {
 }
 
 export default Contacts;
+
+Contacts.propTypes = {
+  filter: PropTypes.string,
+  contacts: PropTypes.array,
+  onDelete: PropTypes.func,
+};

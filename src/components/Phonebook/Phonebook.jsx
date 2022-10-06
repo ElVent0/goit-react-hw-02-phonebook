@@ -1,5 +1,6 @@
 import css from './Phonebook.module.css';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Phonebook extends Component {
   render() {
@@ -38,3 +39,7 @@ class Phonebook extends Component {
 }
 
 export default Phonebook;
+
+Phonebook.propTypes = {
+  onAddContact: PropTypes.func,
+};
