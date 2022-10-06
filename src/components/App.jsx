@@ -53,10 +53,9 @@ export class App extends Component {
       if (item.name.toLowerCase() === name.toLowerCase()) {
         const index = this.state.contacts.indexOf(item);
         this.setState(prevState => ({
-          contacts: [
-            ...prevState.contacts.slice(0, index),
-            ...prevState.contacts.slice(index + 1, this.state.contacts.length),
-          ],
+          contacts: prevState.contacts.filter(
+            item => prevState.contacts.indexOf(item) !== index
+          ),
         }));
       }
     });

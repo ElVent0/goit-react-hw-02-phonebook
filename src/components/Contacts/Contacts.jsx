@@ -2,9 +2,8 @@ import css from './Contacts.module.css';
 import React, { Component } from 'react';
 
 class Contacts extends Component {
-  render() {
+  onFilterArray = () => {
     let filteredArray = [];
-
     if (this.props.filter === '') {
       filteredArray = [...this.props.contacts];
       console.log(filteredArray);
@@ -14,13 +13,15 @@ class Contacts extends Component {
           filteredArray.push(item);
         }
       });
-      console.log(filteredArray);
     }
+    return filteredArray;
+  };
 
+  render() {
     return (
       <>
         <ul className={css.list}>
-          {filteredArray.map(item => {
+          {this.onFilterArray().map(item => {
             return (
               <li className={css.item} key={item.id}>
                 {item.name}: {item.phone}
