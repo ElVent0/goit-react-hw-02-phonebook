@@ -41,7 +41,7 @@ export class App extends Component {
   onDelete = id => e => {
     const name = e.currentTarget.getAttribute('name');
 
-    this.state.contacts.forEach(item => {
+    this.state.contacts.map(item => {
       if (item.name.toLowerCase() === name.toLowerCase()) {
         this.setState(prevState => ({
           contacts: prevState.contacts.filter(item => item.id !== id),
