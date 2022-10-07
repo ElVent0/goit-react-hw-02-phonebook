@@ -9,22 +9,16 @@ export class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    name: '',
-    number: '',
   };
 
-  onAddContact = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const name = form.elements.name.value;
-    const phone = form.elements.number.value;
+  onAddContact = (name, phone) => e => {
     const id = nanoid();
     const newContact = {
       name,
       id,
       phone,
     };
-
+    console.log(this.state);
     if (
       this.state.contacts.some(item => {
         return item.name.toLowerCase() === name.toLowerCase();
@@ -36,8 +30,6 @@ export class App extends Component {
         contacts: [...prevState.contacts, newContact],
       }));
     }
-
-    form.reset();
   };
 
   handleChange = e => {
@@ -46,16 +38,13 @@ export class App extends Component {
     }));
   };
 
-  onDelete = e => {
+  onDelete = id => e => {
     const name = e.currentTarget.getAttribute('name');
 
     this.state.contacts.forEach(item => {
       if (item.name.toLowerCase() === name.toLowerCase()) {
-        const index = this.state.contacts.indexOf(item);
         this.setState(prevState => ({
-          contacts: prevState.contacts.filter(
-            item => prevState.contacts.indexOf(item) !== index
-          ),
+          contacts: prevState.contacts.filter(item => item.id !== id),
         }));
       }
     });

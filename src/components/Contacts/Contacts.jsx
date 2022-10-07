@@ -29,7 +29,7 @@ class Contacts extends Component {
                 <button
                   className={css.button}
                   name={item.name}
-                  onClick={this.props.onDelete}
+                  onClick={this.props.onDelete(item.id)}
                 >
                   Delete
                 </button>
