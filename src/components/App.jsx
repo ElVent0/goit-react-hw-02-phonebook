@@ -38,17 +38,26 @@ export class App extends Component {
     }));
   };
 
-  onDelete = id => e => {
-    const name = e.currentTarget.getAttribute('name');
+  onDelete = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(item => item.id !== id),
+    }));
+  };
 
-    this.state.contacts.map(item => {
-      if (item.name.toLowerCase() === name.toLowerCase()) {
-        this.setState(prevState => ({
-          contacts: prevState.contacts.filter(item => item.id !== id),
-        }));
-      }
-      return item;
-    });
+  onFilteredArray = () => {
+    let filteredArray = [];
+    if (this.state.filter === '') {
+      filteredArray = [...this.state.contacts];
+      console.log(filteredArray);
+    } else if (this.state.filter !== '') {
+      this.state.contacts.map(item => {
+        if (item.name.toLowerCase().includes(this.state.filter.toLowerCase())) {
+          filteredArray.push(item);
+        }
+        return item;
+      });
+    }
+    return filteredArray;
   };
 
   render() {
@@ -62,8 +71,7 @@ export class App extends Component {
           handleChange={this.handleChange}
         ></Filter>
         <Contacts
-          contacts={this.state.contacts}
-          filter={this.state.filter}
+          filteredArray={this.onFilteredArray}
           onDelete={this.onDelete}
         />
       </>
