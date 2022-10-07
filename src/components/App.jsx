@@ -47,6 +47,7 @@ export class App extends Component {
           contacts: prevState.contacts.filter(item => item.id !== id),
         }));
       }
+      return item;
     });
   };
 

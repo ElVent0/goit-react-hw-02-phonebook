@@ -13,6 +13,7 @@ class Contacts extends Component {
         if (item.name.toLowerCase().includes(this.props.filter.toLowerCase())) {
           filteredArray.push(item);
         }
+        return item;
       });
     }
     return filteredArray;
